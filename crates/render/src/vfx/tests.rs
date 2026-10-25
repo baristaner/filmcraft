@@ -142,6 +142,9 @@ const NEW_IDS: &[&str] = &[
     "simple_text",
     "noise",
     "mosaic",
+    // film emulation
+    "halation",
+    "film_look",
 ];
 
 #[test]
@@ -260,6 +263,8 @@ fn neutral_parameters_are_identity() {
         ("light_leaks", vec![("intensity", ParamValue::Float(0.0))]),
         ("lens_flare", vec![("brightness", ParamValue::Float(0.0))]),
         ("simple_text", vec![("text", ParamValue::Text(String::new()))]),
+        ("halation", vec![("strength", ParamValue::Float(0.0))]),
+        ("film_look", vec![("color_blend", ParamValue::Float(0.0))]),
     ];
     for (id, params) in cases {
         let mut e = inst(id);

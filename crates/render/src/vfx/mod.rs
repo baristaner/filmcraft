@@ -15,6 +15,7 @@ mod blur;
 mod color;
 pub(crate) use color::cdl;
 mod distort;
+mod film;
 mod immersive;
 mod lights;
 mod stylize;
@@ -466,6 +467,9 @@ pub fn apply(img: &mut Image, e: &EffectInstance, cx: &FxCtx) -> bool {
         "track_matte" => color::track_matte(img, e, cx),
         "cineon_converter" => color::cineon(img, e, cx),
         "noise" | "noise_legacy" => color::noise(img, e, cx),
+        // Film Emulation
+        "halation" => film::halation(img, e, cx),
+        "film_look" => film::film_look(img, e, cx),
         // Blur & Sharpen
         "bokeh_blur" => blur::bokeh(img, e, cx),
         "channel_blur" => blur::channel_blur(img, e, cx),

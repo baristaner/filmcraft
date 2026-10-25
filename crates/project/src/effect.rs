@@ -16,6 +16,9 @@ mod audio;
 use crate::mask::Mask;
 pub use audio::{GEQ10_LABELS, GEQ20_LABELS, GEQ30_LABELS, PREMIERE_AUDIO_EFFECTS};
 
+mod film;
+pub use film::{FILM, FILM_LOOKS};
+
 mod vfx;
 pub use vfx::{EASINGS, ECHO_OPERATORS, FRAME_LAYOUTS, LIGHT_IDS, SIMPLE_BLEND, TRACK_CHOICES, auto_point, ultra_key_setting};
 
@@ -849,6 +852,8 @@ fn build_effects() -> Vec<EffectDef> {
         }
     }
     vfx::apply_badges(&mut v);
+    // own folder and badges (not part of the Premiere catalogue the badge table follows)
+    v.extend(film::defs());
     v
 }
 
